@@ -1,114 +1,45 @@
-local Workspace = game:GetService("Workspace")
+local TweenService = game:GetService("TweenService")
 
-local part = Workspace.Part
+local PhysicsUtils = require(game.ReplicatedStorage.Lib.Physics.PhysicsUtils)
 
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
+local player = game.Players:WaitForChild("MonkeyD_Robson")
 
-local ms = game:GetService("MaterialService")
+local char = player.Character or player.CharacterAdded:Wait()
 
-local counter = 0
-
-local water = Workspace.water
-
-local defaultWaterSize = Workspace.water.Size
-
-local defaultWaterPos = water.Position
-
-local initialpos = part.Position + Vector3.new(0, 3, 0)
-local missile = Workspace.Missile
-
-
-local function rotateVector(vector, angle)
-	local cos = math.cos(angle)
-	local sin = math.sin(angle)
-	return Vector3.new(vector.X * cos - vector.Z * sin, vector.Y, vector.X * sin + vector.Z * cos)
+for _, obj in ipairs(char:GetDescendants()) do
+	if obj:IsA("BasePart") then
+		obj.Anchored = true
+	end
 end
 
-local counter = 0
-local r = 2
-local stepstoExecute = 3
-local currentSteps = 0
+local info = TweenInfo.new(
+	10,
+	Enum.EasingStyle.Quad,
+	Enum.EasingDirection.InOut
+)
 
-local function cycle()
-	local i, j = 0, 0
 
-	local stepTheta = 10
-	local stepPhi = 10
-	
-	RunService.Heartbeat:Connect(function(dt)
-		
-		currentSteps = currentSteps + 1
-	
 
-		local Players = game:GetService("Players")
 
-		
-			local closestPlayer = nil
-			local shortestDistance = math.huge
+char:PivotTo(PhysicsUtils.rotateX(char, 90))
 
-			for _, player in ipairs(Players:GetPlayers()) do
-				local character = player.Character
-				if character and character:FindFirstChild("HumanoidRootPart") then
-					local hrp = character.HumanoidRootPart
-					local distance = (hrp.Position - missile.Position).Magnitude
 
-					if distance < shortestDistance then
-						shortestDistance = distance
-						closestPlayer = player
-					end
-				end
-			end
-			
-			if closestPlayer then
-				local hrp = closestPlayer.Character.HumanoidRootPart
-			
-				
-			local direction = (hrp.Position - missile.Position).Unit
-			missile.CFrame = CFrame.lookAt(missile.Position, hrp.Position)
-			if shortestDistance > 5 then
-				
-			
-			end
-			end
-			
-		
-		
-		
-		if (currentSteps > stepstoExecute) then
-			local vec = Vector3.new(math.random(0,1), 0, math.random(0, 1))
-	
-			water.Size = defaultWaterSize + vec
-			currentSteps = 0
-		end
-		
-	
-		
-		
-		
-		
-		
-		
-		j += stepPhi * dt * 50
 
-		if j >= 180 then
-			j = 0
-			i += stepTheta
-		end
+local start = char:GetPivot()
 
-		if i >= 360 then
-			i = 0
-		end
+local goal = PhysicsUtils.moveRelativeY(char, -100)
 
-		local theta = math.rad(i)
-		local phi = math.rad(j)
-		local r = 2
+local value = Instance.new("NumberValue")
 
-		part.Position = initialpos + Vector3.new(
-			r * math.cos(theta) * math.sin(phi),
-			r * math.cos(phi),
-			r * math.sin(theta) * math.sin(phi)
-		)
-	end)
-end
-cycle()
+local tween = TweenService:Create(
+	value,
+	info,
+	{Value = 1}
+)
+
+value:GetPropertyChangedSignal("Value"):Connect(function()
+	char:PivotTo(start:Lerp(goal, value.Value))
+end)
+
+tween:Play()
+

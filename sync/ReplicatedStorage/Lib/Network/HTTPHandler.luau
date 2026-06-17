@@ -1,3 +1,9 @@
-local module = {}
+local HTTPHandler = {}
 
-return module
+local HttpService =
+	game:GetService("HttpService")
+
+
+
+
+return HTTPHandler

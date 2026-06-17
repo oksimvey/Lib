@@ -1,7 +1,5 @@
 local MathUtils = {}
 
-
-
 function MathUtils.rotateVectorX(vector: Vector3, rotation: number)
 	local angle = math.rad(rotation)
 	local cosA = math.cos(angle)

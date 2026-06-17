@@ -1,5 +1,5 @@
-local module = {}
+local AnimationManager = {}
 
 local new = 2;
 
-return module
+return AnimationManager
