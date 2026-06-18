@@ -5,64 +5,64 @@
     {
       "name": "Lighting",
       "className": "Lighting",
-      "guid": "11067",
+      "guid": "11012",
       "children": [
         {
           "name": "Atmosphere",
           "className": "Atmosphere",
-          "guid": "11023"
+          "guid": "10968"
         },
         {
           "name": "Bloom",
           "className": "BloomEffect",
-          "guid": "11031"
+          "guid": "10976"
         },
         {
           "name": "Blur",
           "className": "BlurEffect",
-          "guid": "11032"
+          "guid": "10977"
         },
         {
           "name": "ColorCorrection",
           "className": "ColorCorrectionEffect",
-          "guid": "11047"
+          "guid": "10992"
         },
         {
           "name": "Sunless Blue Sky",
           "className": "Sky",
-          "guid": "11113"
+          "guid": "11059"
         },
         {
           "name": "SunRays",
           "className": "SunRaysEffect",
-          "guid": "11117"
+          "guid": "11063"
         }
       ]
     },
     {
       "name": "ReplicatedFirst",
       "className": "ReplicatedFirst",
-      "guid": "8421"
+      "guid": "8379"
     },
     {
       "name": "ReplicatedStorage",
       "className": "ReplicatedStorage",
-      "guid": "11108",
+      "guid": "11054",
       "children": [
         {
           "name": "Lib",
           "className": "Folder",
-          "guid": "11050",
+          "guid": "10995",
           "children": [
             {
               "name": "Animation",
               "className": "Folder",
-              "guid": "11060",
+              "guid": "11005",
               "children": [
                 {
                   "name": "AnimationManager",
                   "className": "ModuleScript",
-                  "guid": "11098",
+                  "guid": "11045",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Animation/AnimationManager.luau"
                   ]
@@ -72,17 +72,17 @@
             {
               "name": "Areas",
               "className": "Folder",
-              "guid": "11057"
+              "guid": "11002"
             },
             {
               "name": "Camera",
               "className": "Folder",
-              "guid": "11056",
+              "guid": "11001",
               "children": [
                 {
                   "name": "CameraUtils",
                   "className": "ModuleScript",
-                  "guid": "11092",
+                  "guid": "11039",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Camera/CameraUtils.luau"
                   ]
@@ -92,12 +92,12 @@
             {
               "name": "Data",
               "className": "Folder",
-              "guid": "11054",
+              "guid": "10999",
               "children": [
                 {
                   "name": "AttributeManager",
                   "className": "ModuleScript",
-                  "guid": "11087",
+                  "guid": "11032",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Data/AttributeManager.luau"
                   ]
@@ -105,7 +105,7 @@
                 {
                   "name": "DataManager",
                   "className": "ModuleScript",
-                  "guid": "11086",
+                  "guid": "11031",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Data/DataManager.luau"
                   ]
@@ -113,7 +113,7 @@
                 {
                   "name": "StateManager",
                   "className": "ModuleScript",
-                  "guid": "11088",
+                  "guid": "11030",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Data/StateManager.luau"
                   ]
@@ -123,17 +123,17 @@
             {
               "name": "Events",
               "className": "Folder",
-              "guid": "11062"
+              "guid": "11007"
             },
             {
               "name": "Input",
               "className": "Folder",
-              "guid": "11061",
+              "guid": "11006",
               "children": [
                 {
                   "name": "InputHandler",
                   "className": "ModuleScript",
-                  "guid": "11100",
+                  "guid": "11046",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Input/InputHandler.luau"
                   ]
@@ -141,7 +141,7 @@
                 {
                   "name": "KeyBase",
                   "className": "ModuleScript",
-                  "guid": "11099",
+                  "guid": "11047",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Input/KeyBase.luau"
                   ]
@@ -151,28 +151,28 @@
             {
               "name": "Math",
               "className": "Folder",
-              "guid": "11053",
+              "guid": "10998",
               "children": [
                 {
                   "name": "BezierCurve",
                   "className": "ModuleScript",
-                  "guid": "11085",
+                  "guid": "11026",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Math/BezierCurve.luau"
                   ]
                 },
                 {
-                  "name": "Easing",
+                  "name": "EasingManager",
                   "className": "ModuleScript",
-                  "guid": "11083",
+                  "guid": "11029",
                   "filePaths": [
-                    "sync/ReplicatedStorage/Lib/Math/Easing.luau"
+                    "sync/ReplicatedStorage/Lib/Math/EasingManager.luau"
                   ]
                 },
                 {
                   "name": "MathFunction",
                   "className": "ModuleScript",
-                  "guid": "11084",
+                  "guid": "11028",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Math/MathFunction.luau"
                   ]
@@ -180,7 +180,7 @@
                 {
                   "name": "MathUtils",
                   "className": "ModuleScript",
-                  "guid": "11082",
+                  "guid": "11027",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Math/MathUtils.luau"
                   ]
@@ -190,12 +190,12 @@
             {
               "name": "Network",
               "className": "Folder",
-              "guid": "11052",
+              "guid": "10997",
               "children": [
                 {
                   "name": "ClientPacketHandler",
                   "className": "ModuleScript",
-                  "guid": "11079",
+                  "guid": "11024",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Network/ClientPacketHandler.luau"
                   ]
@@ -203,7 +203,7 @@
                 {
                   "name": "HTTPHandler",
                   "className": "ModuleScript",
-                  "guid": "11081",
+                  "guid": "11025",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Network/HTTPHandler.luau"
                   ]
@@ -211,7 +211,7 @@
                 {
                   "name": "ServerPacketHandler",
                   "className": "ModuleScript",
-                  "guid": "11080",
+                  "guid": "11023",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Network/ServerPacketHandler.luau"
                   ]
@@ -221,28 +221,52 @@
             {
               "name": "Physics",
               "className": "Folder",
-              "guid": "11055",
+              "guid": "11000",
               "children": [
+                {
+                  "name": "DynamicsUtils",
+                  "className": "ModuleScript",
+                  "guid": "11038",
+                  "filePaths": [
+                    "sync/ReplicatedStorage/Lib/Physics/DynamicsUtils.luau"
+                  ]
+                },
+                {
+                  "name": "KinematicsUtils",
+                  "className": "ModuleScript",
+                  "guid": "11037",
+                  "filePaths": [
+                    "sync/ReplicatedStorage/Lib/Physics/KinematicsUtils.luau"
+                  ]
+                },
                 {
                   "name": "OBB",
                   "className": "ModuleScript",
-                  "guid": "11091",
+                  "guid": "11035",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Physics/OBB.luau"
                   ]
                 },
                 {
-                  "name": "PhysicsUtils",
+                  "name": "PhysicalInstanceManager",
                   "className": "ModuleScript",
-                  "guid": "11089",
+                  "guid": "11034",
                   "filePaths": [
-                    "sync/ReplicatedStorage/Lib/Physics/PhysicsUtils.luau"
+                    "sync/ReplicatedStorage/Lib/Physics/PhysicalInstanceManager.luau"
+                  ]
+                },
+                {
+                  "name": "PhysicalStateUtils",
+                  "className": "ModuleScript",
+                  "guid": "11036",
+                  "filePaths": [
+                    "sync/ReplicatedStorage/Lib/Physics/PhysicalStateUtils.luau"
                   ]
                 },
                 {
                   "name": "TerrainDeformer",
                   "className": "ModuleScript",
-                  "guid": "11090",
+                  "guid": "11033",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Physics/TerrainDeformer.luau"
                   ]
@@ -252,12 +276,12 @@
             {
               "name": "Rendering",
               "className": "Folder",
-              "guid": "11051",
+              "guid": "10996",
               "children": [
                 {
                   "name": "Curve",
                   "className": "ModuleScript",
-                  "guid": "11077",
+                  "guid": "11019",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Rendering/Curve.luau"
                   ]
@@ -265,7 +289,7 @@
                 {
                   "name": "CurveRenderer",
                   "className": "ModuleScript",
-                  "guid": "11076",
+                  "guid": "11020",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Rendering/CurveRenderer.luau"
                   ]
@@ -273,7 +297,7 @@
                 {
                   "name": "Mesh",
                   "className": "ModuleScript",
-                  "guid": "11078",
+                  "guid": "11021",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Rendering/Mesh.luau"
                   ]
@@ -281,7 +305,7 @@
                 {
                   "name": "MeshRenderer",
                   "className": "ModuleScript",
-                  "guid": "11075",
+                  "guid": "11022",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Rendering/MeshRenderer.luau"
                   ]
@@ -291,12 +315,12 @@
             {
               "name": "Routes",
               "className": "Folder",
-              "guid": "11063",
+              "guid": "11008",
               "children": [
                 {
                   "name": "RoutesManager",
                   "className": "ModuleScript",
-                  "guid": "11101",
+                  "guid": "11048",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Routes/RoutesManager.luau"
                   ]
@@ -306,12 +330,12 @@
             {
               "name": "UI",
               "className": "Folder",
-              "guid": "11058",
+              "guid": "11003",
               "children": [
                 {
                   "name": "UIBase",
                   "className": "ModuleScript",
-                  "guid": "11094",
+                  "guid": "11040",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/UI/UIBase.luau"
                   ]
@@ -319,7 +343,7 @@
                 {
                   "name": "UIComponent",
                   "className": "ModuleScript",
-                  "guid": "11093",
+                  "guid": "11042",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/UI/UIComponent.luau"
                   ]
@@ -327,7 +351,7 @@
                 {
                   "name": "UIManager",
                   "className": "ModuleScript",
-                  "guid": "11095",
+                  "guid": "11041",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/UI/UIManager.luau"
                   ]
@@ -337,12 +361,12 @@
             {
               "name": "VFX",
               "className": "Folder",
-              "guid": "11059",
+              "guid": "11004",
               "children": [
                 {
                   "name": "VFXBase",
                   "className": "ModuleScript",
-                  "guid": "11096",
+                  "guid": "11043",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/VFX/VFXBase.luau"
                   ]
@@ -350,7 +374,7 @@
                 {
                   "name": "VFXManager",
                   "className": "ModuleScript",
-                  "guid": "11097",
+                  "guid": "11044",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/VFX/VFXManager.luau"
                   ]
@@ -364,12 +388,12 @@
     {
       "name": "ServerScriptService",
       "className": "ServerScriptService",
-      "guid": "11110",
+      "guid": "11056",
       "children": [
         {
           "name": "Script",
           "className": "Script",
-          "guid": "11109",
+          "guid": "11055",
           "filePaths": [
             "sync/ServerScriptService/Script.server.luau"
           ]
@@ -379,56 +403,42 @@
     {
       "name": "ServerStorage",
       "className": "ServerStorage",
-      "guid": "11111",
-      "children": [
-        {
-          "name": "RBX_ANIMSAVES",
-          "className": "Model",
-          "guid": "11074",
-          "children": [
-            {
-              "name": "Deer (Male)",
-              "className": "ObjectValue",
-              "guid": "11103"
-            }
-          ]
-        }
-      ]
+      "guid": "11057"
     },
     {
       "name": "SoundService",
       "className": "SoundService",
-      "guid": "8181"
+      "guid": "7876"
     },
     {
       "name": "StarterGui",
       "className": "StarterGui",
-      "guid": "8434"
+      "guid": "8392"
     },
     {
       "name": "StarterPack",
       "className": "StarterPack",
-      "guid": "8433"
+      "guid": "8391"
     },
     {
       "name": "StarterPlayer",
       "className": "StarterPlayer",
-      "guid": "8432",
+      "guid": "8390",
       "children": [
         {
           "name": "StarterCharacterScripts",
           "className": "StarterCharacterScripts",
-          "guid": "11114"
+          "guid": "11060"
         },
         {
           "name": "StarterPlayerScripts",
           "className": "StarterPlayerScripts",
-          "guid": "11115",
+          "guid": "11061",
           "children": [
             {
               "name": "Client",
               "className": "LocalScript",
-              "guid": "11068",
+              "guid": "11013",
               "filePaths": [
                 "sync/StarterPlayer/StarterPlayerScripts/Client.client.luau"
               ]
@@ -445,96 +455,96 @@
         {
           "name": "Baseplate",
           "className": "Part",
-          "guid": "11104",
+          "guid": "11050",
           "children": [
             {
               "name": "Texture",
               "className": "Texture",
-              "guid": "11122"
+              "guid": "11068"
             }
           ]
         },
         {
           "name": "Camera",
           "className": "Camera",
-          "guid": "190396"
+          "guid": "2706038"
         },
         {
           "name": "Cool",
           "className": "Part",
-          "guid": "11105"
+          "guid": "11051"
         },
         {
           "name": "Copilot3D-5044f56d-87cd-4e25-9b41-be2ce667a4e2",
           "className": "Model",
-          "guid": "11073",
+          "guid": "11018",
           "children": [
             {
               "name": "AnimationController",
               "className": "AnimationController",
-              "guid": "11022"
+              "guid": "10967"
             },
             {
               "name": "geometry_0",
               "className": "MeshPart",
-              "guid": "11072",
+              "guid": "11017",
               "children": [
                 {
                   "name": "SurfaceAppearance",
                   "className": "SurfaceAppearance",
-                  "guid": "11118"
+                  "guid": "11064"
                 }
               ]
             },
             {
               "name": "InitialPoses",
               "className": "Folder",
-              "guid": "11049",
+              "guid": "10994",
               "children": [
                 {
                   "name": "geometry_0_Composited",
                   "className": "CFrameValue",
-                  "guid": "11040"
+                  "guid": "10985"
                 },
                 {
                   "name": "geometry_0_Initial",
                   "className": "CFrameValue",
-                  "guid": "11042"
+                  "guid": "10987"
                 },
                 {
                   "name": "geometry_0_Node_Composited",
                   "className": "CFrameValue",
-                  "guid": "11037"
+                  "guid": "10982"
                 },
                 {
                   "name": "geometry_0_Node_Initial",
                   "className": "CFrameValue",
-                  "guid": "11039"
+                  "guid": "10984"
                 },
                 {
                   "name": "geometry_0_Node_Original",
                   "className": "CFrameValue",
-                  "guid": "11038"
+                  "guid": "10983"
                 },
                 {
                   "name": "geometry_0_Original",
                   "className": "CFrameValue",
-                  "guid": "11041"
+                  "guid": "10986"
                 },
                 {
                   "name": "world_Composited",
                   "className": "CFrameValue",
-                  "guid": "11034"
+                  "guid": "10979"
                 },
                 {
                   "name": "world_Initial",
                   "className": "CFrameValue",
-                  "guid": "11036"
+                  "guid": "10981"
                 },
                 {
                   "name": "world_Original",
                   "className": "CFrameValue",
-                  "guid": "11035"
+                  "guid": "10980"
                 }
               ]
             }
@@ -543,12 +553,12 @@
         {
           "name": "Terrain",
           "className": "Terrain",
-          "guid": "11120"
+          "guid": "11066"
         },
         {
           "name": "testpart",
           "className": "Part",
-          "guid": "11106"
+          "guid": "11052"
         }
       ]
     }

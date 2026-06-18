@@ -1,45 +1,47 @@
 local TweenService = game:GetService("TweenService")
 
-local PhysicsUtils = require(game.ReplicatedStorage.Lib.Physics.PhysicsUtils)
+local PhysicalStateUtils = require(game.ReplicatedStorage.Lib.Physics.PhysicalStateUtils)
+
+local EasingManager = require(game.ReplicatedStorage.Lib.Math.EasingManager)
 
 local player = game.Players:WaitForChild("MonkeyD_Robson")
 
 local char = player.Character or player.CharacterAdded:Wait()
 
+local part : BasePart = workspace.Cool
+
+
 for _, obj in ipairs(char:GetDescendants()) do
+
 	if obj:IsA("BasePart") then
-		obj.Anchored = true
+
+
+		local attachment = Instance.new("Attachment")
+		attachment.Parent = obj
+
+		local velocity = Instance.new("LinearVelocity")
+		velocity.Attachment0 = attachment
+
+		velocity.VectorVelocity = Vector3.new(0, 0, 0)
+		velocity.Parent = obj
 	end
+
 end
 
-local info = TweenInfo.new(
-	10,
-	Enum.EasingStyle.Quad,
-	Enum.EasingDirection.InOut
-)
+
+local info = TweenInfo.new(10, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+
+local newcframe : CFrame = CFrame.new(100, 0, 0)
+
+
+PhysicalStateUtils.setCFrame(char, CFrame.new(100, 100, 0))
+PhysicalStateUtils.setCFrameEased(part, newcframe, info)
+
+PhysicalStateUtils.setCFrameEased(char, newcframe, info)
 
 
 
 
-char:PivotTo(PhysicsUtils.rotateX(char, 90))
 
 
-
-local start = char:GetPivot()
-
-local goal = PhysicsUtils.moveRelativeY(char, -100)
-
-local value = Instance.new("NumberValue")
-
-local tween = TweenService:Create(
-	value,
-	info,
-	{Value = 1}
-)
-
-value:GetPropertyChangedSignal("Value"):Connect(function()
-	char:PivotTo(start:Lerp(goal, value.Value))
-end)
-
-tween:Play()
 
