@@ -105,7 +105,7 @@
                 {
                   "name": "DataManager",
                   "className": "ModuleScript",
-                  "guid": "11031",
+                  "guid": "11030",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Data/DataManager.luau"
                   ]
@@ -113,7 +113,7 @@
                 {
                   "name": "StateManager",
                   "className": "ModuleScript",
-                  "guid": "11030",
+                  "guid": "11031",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Data/StateManager.luau"
                   ]
@@ -164,7 +164,7 @@
                 {
                   "name": "EasingManager",
                   "className": "ModuleScript",
-                  "guid": "11029",
+                  "guid": "11028",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Math/EasingManager.luau"
                   ]
@@ -172,7 +172,7 @@
                 {
                   "name": "MathFunction",
                   "className": "ModuleScript",
-                  "guid": "11028",
+                  "guid": "11029",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Math/MathFunction.luau"
                   ]
@@ -195,7 +195,7 @@
                 {
                   "name": "ClientPacketHandler",
                   "className": "ModuleScript",
-                  "guid": "11024",
+                  "guid": "11025",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Network/ClientPacketHandler.luau"
                   ]
@@ -203,7 +203,7 @@
                 {
                   "name": "HTTPHandler",
                   "className": "ModuleScript",
-                  "guid": "11025",
+                  "guid": "11023",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Network/HTTPHandler.luau"
                   ]
@@ -211,7 +211,7 @@
                 {
                   "name": "ServerPacketHandler",
                   "className": "ModuleScript",
-                  "guid": "11023",
+                  "guid": "11024",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Network/ServerPacketHandler.luau"
                   ]
@@ -297,7 +297,7 @@
                 {
                   "name": "Mesh",
                   "className": "ModuleScript",
-                  "guid": "11021",
+                  "guid": "11022",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Rendering/Mesh.luau"
                   ]
@@ -305,7 +305,7 @@
                 {
                   "name": "MeshRenderer",
                   "className": "ModuleScript",
-                  "guid": "11022",
+                  "guid": "11021",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/Rendering/MeshRenderer.luau"
                   ]
@@ -335,7 +335,7 @@
                 {
                   "name": "UIBase",
                   "className": "ModuleScript",
-                  "guid": "11040",
+                  "guid": "11041",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/UI/UIBase.luau"
                   ]
@@ -351,7 +351,7 @@
                 {
                   "name": "UIManager",
                   "className": "ModuleScript",
-                  "guid": "11041",
+                  "guid": "11040",
                   "filePaths": [
                     "sync/ReplicatedStorage/Lib/UI/UIManager.luau"
                   ]
@@ -408,7 +408,7 @@
     {
       "name": "SoundService",
       "className": "SoundService",
-      "guid": "7876"
+      "guid": "7575"
     },
     {
       "name": "StarterGui",
@@ -467,7 +467,7 @@
         {
           "name": "Camera",
           "className": "Camera",
-          "guid": "2706038"
+          "guid": "4579596"
         },
         {
           "name": "Cool",

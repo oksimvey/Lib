@@ -5,6 +5,8 @@ local TweenService = game:GetService("TweenService")
 
 local EasingManager = require(game.ReplicatedStorage.Lib.Math.EasingManager)
 
+local MathUtils = require(game.ReplicatedStorage.Lib.Math.MathUtils)
+
 
 local PhysicalInstanceManager = require(game.ReplicatedStorage.Lib.Physics.PhysicalInstanceManager)
 
@@ -14,8 +16,7 @@ export type Transformable = PhysicalInstanceManager.Transformable
 -- State
 
 export type PhysicalState = {
-	acceleration : Vector3,
-	velocity : Vector3
+	acceleration : Vector3
 }
 
 
@@ -141,15 +142,23 @@ function PhysicalStateUtils.addPositionRelativeZEased(instance : Transformable, 
 end
 
 function PhysicalStateUtils.getPosition(instance : Transformable)
-
+	return PhysicalInstanceManager.getPosition(instance)
 end
 
-function PhysicalStateUtils.getRotation(instance : Transformable)
+function PhysicalStateUtils.getRotationCFrame(instance : Transformable)
+	return PhysicalInstanceManager.getRotation(instance)
+end
 
+function PhysicalStateUtils.getRotationAngles(instance : Transformable) : Vector3 | nil
+	local rotCframe = PhysicalInstanceManager.getRotation(instance)
+	if rotCframe ~= nil then
+		return MathUtils.CFrameToEulerAngles(rotCframe)
+	end
+	return nil
 end
 
 function PhysicalStateUtils.getCFrame(instance : Transformable)
-
+	return PhysicalInstanceManager.getCFrame(instance)
 end
 
 return PhysicalStateUtils
