@@ -174,6 +174,14 @@ function MathUtils.rotateCFrameGlobalZ(cframe: CFrame, angleDeg: number): CFrame
 	return CFrame.Angles(0, 0, rad(angleDeg)) * cframe
 end
 
+function MathUtils.CFrameFromPosAndRot(pos : Vector3, rot : Vector3)
+	return CFrame.new(pos) * CFrame.fromOrientation(rad(rot.X), rad(rot.Y), rad(rot.Z))
+end
+
+function MathUtils.CFrameFromPosAndRotNumber(x : number, y : number, z : number, pitch : number, yaw : number, roll : number)
+	return CFrame.new(x, y, z) * CFrame.fromOrientation(rad(pitch), rad(yaw), rad(roll))
+end
+
 --// Vector math
 
 -- Returns the distance between two points.

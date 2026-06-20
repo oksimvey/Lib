@@ -408,7 +408,7 @@
     {
       "name": "SoundService",
       "className": "SoundService",
-      "guid": "7575"
+      "guid": "7895"
     },
     {
       "name": "StarterGui",
@@ -467,7 +467,7 @@
         {
           "name": "Camera",
           "className": "Camera",
-          "guid": "4579596"
+          "guid": "229289"
         },
         {
           "name": "Cool",

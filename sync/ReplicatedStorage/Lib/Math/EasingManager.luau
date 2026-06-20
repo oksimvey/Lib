@@ -1,3 +1,5 @@
+const MathUtils = require("./MathUtils")
+
 local EasingManager = {}
 
 local TweenService = game:GetService("TweenService")
@@ -38,12 +40,11 @@ end
 
 function EasingManager.createCFrameTweenForModel(
 	part: Model,
-	start: CFrame,
 	goal: CFrame,
 	info: TweenInfo
 ): Tween
-	
-	part:PivotTo(start) -- fix: snap to start immediately (handles DelayTime correctly)
+
+	local start = part:GetPivot() -- fix: was missing "start" initialization
 
 	local task : (value : NumberValue) -> () = function(value : NumberValue)
 		part:PivotTo(start:Lerp(goal, value.Value))
@@ -54,41 +55,61 @@ end
 
 function EasingManager.createCFrameTweenForPart(
 	part: BasePart,
-	start: CFrame,
 	goal: CFrame,
 	info: TweenInfo
 ): Tween
-	part.CFrame = start -- fix: "start" was previously ignored; tween used part's current CFrame
 	return TweenService:Create(part, info, {CFrame = goal})
 end
+
+function EasingManager.createCFrameTweenForCamera(
+	camera: Camera,
+	goal: CFrame,
+	info: TweenInfo
+): Tween
+	return TweenService:Create(camera, info, {CFrame = goal})
+end
+
+
+
 
 --// Position-only tweens
 
 function EasingManager.createPositionTweenForModel(
 	part: Model,
-	start: Vector3,
 	goal: Vector3,
 	info: TweenInfo
 ): Tween
 	local rotation = part:GetPivot() - part:GetPivot().Position -- isolate rotation, zero translation
-	part:PivotTo(CFrame.new(start) * rotation)
-	
+	local start = part:GetPivot().Position -- keep the model's current position
+
 	local task : (value : NumberValue) -> () = function(value : NumberValue)
 		part:PivotTo(CFrame.new(start:Lerp(goal, value.Value)) * rotation)
 	end
-	
+
 	return EasingManager.createCustomTween(info, task)
 end
 
 function EasingManager.createPositionTweenForPart(
 	part: BasePart,
-	start: Vector3,
 	goal: Vector3,
 	info: TweenInfo
 ): Tween
-	part.Position = start
 	return TweenService:Create(part, info, {Position = goal})
 end
+
+function EasingManager.createPositionTweenForCamera(
+	camera: Camera,
+	goal: Vector3,
+	info: TweenInfo
+): Tween
+	
+	return TweenService:Create(
+		camera,
+		info,
+		{ CFrame = CFrame.new(goal) * camera.CFrame.Rotation}
+	)
+end
+
 
 --// Rotation-only tweens
 
@@ -96,13 +117,14 @@ end
 -- position component on them is discarded, the model's current position is kept fixed.
 function EasingManager.createRotationTweenForModel(
 	part: Model,
-	start: CFrame,
 	goal: CFrame,
 	info: TweenInfo
 ): Tween
-	
+
+
 	local position = part:GetPivot().Position
-	part:PivotTo(start + position)
+
+	local start = part:GetPivot() - position -- zero out the position component, keep rotation
 
 	local value = Instance.new("NumberValue")
 	local tween = TweenService:Create(value, info, {Value = 1})
@@ -125,72 +147,121 @@ end
 -- start/goal are Euler angles in degrees (matches BasePart.Orientation).
 function EasingManager.createRotationTweenForPart(
 	part: BasePart,
-	start: CFrame,
 	goal: CFrame,
 	info: TweenInfo
 ): Tween
 	return TweenService:Create(part, info, {Orientation = goal})
 end
 
+function EasingManager.createRotationTweenForCamera(
+	camera: Camera,
+	goal: CFrame,
+	info: TweenInfo
+): Tween
 
-function EasingManager.easeCFrame(part : Transformable, goal : CFrame, info : TweenInfo)
+	return TweenService:Create(camera, info, {CFrame = CFrame.new(camera.CFrame.Position) * goal})
+end
 
-	local start : CFrame
+
+function EasingManager.easeCFrame(part : Transformable | Camera, goal : CFrame, info : TweenInfo)
 
 	local tween : Tween
 
 	if part:IsA("Model") then
 
-		start = part:GetPivot()
-		tween = EasingManager.createCFrameTweenForModel(part, start, goal, info)
+		tween = EasingManager.createCFrameTweenForModel(part,  goal, info)
 
-	else 
-		start = part.CFrame
-		tween = EasingManager.createCFrameTweenForPart(part, start, goal, info)
+	elseif part:IsA("BasePart") then
+
+		tween = EasingManager.createCFrameTweenForPart(part, goal, info)
+
+	elseif part:IsA("Camera") then
+
+			tween = EasingManager.createCFrameTweenForCamera(part, goal, info)
+
+			if part.CameraType ~= Enum.CameraType.Scriptable then
+
+				local origtype = part.CameraType
+				part.CameraType = Enum.CameraType.Scriptable
+				tween.Completed:Once(function()
+					part.CameraType = origtype
+				end)
+
+			end
 
 	end
 
 	tween:Play()
 end
 
-function EasingManager.easePosition(part : Transformable, goal : Vector3, info : TweenInfo)
-	
-	local start : Vector3
-	
-	local tween : Tween
-	
-	if part:IsA("Model") then
-		
-		start = part:GetPivot().Position
-		tween = EasingManager.createPositionTweenForModel(part, start, goal, info)
-		
-	else 
-		start = part.Position
-		tween = EasingManager.createPositionTweenForPart(part, start, goal, info)
-		
-	end
-	
-	tween:Play()
+function EasingManager.easePosition(part : Transformable | Camera, goal : Vector3, info : TweenInfo)
+
+		local tween : Tween
+
+		if part:IsA("Model") then
+
+			tween = EasingManager.createPositionTweenForModel(part, goal, info)
+
+		elseif part:IsA("BasePart") then
+
+			tween = EasingManager.createPositionTweenForPart(part, goal, info)
+
+		elseif part:IsA("Camera") then
+
+			tween = EasingManager.createPositionTweenForCamera(part, goal, info)
+
+			if part.CameraType ~= Enum.CameraType.Scriptable then
+
+				local origtype = part.CameraType
+				part.CameraType = Enum.CameraType.Scriptable
+				tween.Completed:Once(function()
+					part.CameraType = origtype
+				end)
+
+			end
+
+		end
+
+		tween:Play()
 end
 
-function EasingManager.easeRotation(part : Transformable, goal : CFrame, info : TweenInfo)
+function EasingManager.easeRotation(part : Transformable | Camera, goal : CFrame, info : TweenInfo)
 
-	local start : CFrame
-	
-	local tween : Tween
-	
-	if part:IsA("Model") then
-		
-		start = part:GetPivot().Rotation
-		tween = EasingManager.createRotationTweenForModel(part, start, goal, info)
-		
-	else 
-		start = part.CFrame.Rotation
-		tween = EasingManager.createRotationTweenForPart(part, start, goal, info)
-		
-	end
-	
-	tween:Play()
+		local tween : Tween
+
+		if part:IsA("Model") then
+
+			tween = EasingManager.createRotationTweenForModel(part,goal, info)
+
+		elseif part:IsA("BasePart") then
+
+			tween = EasingManager.createRotationTweenForPart(part, goal, info)
+
+		elseif part:IsA("Camera") then
+
+			tween = EasingManager.createRotationTweenForCamera(part, goal, info)
+
+			if part.CameraType ~= Enum.CameraType.Scriptable then
+
+				local origtype = part.CameraType
+				part.CameraType = Enum.CameraType.Scriptable
+				tween.Completed:Once(function()
+					part.CameraType = origtype
+				end)
+
+			end
+
+		end
+
+		tween:Play()
+end
+
+function EasingManager.easeRotationAngles(part : Transformable | Camera, goal : Vector3, info : TweenInfo)
+		EasingManager.easeRotation(
+			part,
+			MathUtils.eulerAnglesToCFrame(goal),
+			info
+		)
 end
 
 function EasingManager.EaseScale(part : Transformable, goal : Vector3, info : TweenInfo)
