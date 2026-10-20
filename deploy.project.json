@@ -1,0 +1,12 @@
+{
+  "name": "Lib Incremental Package",
+  "tree": {
+    "$className": "Folder",
+    "ReplicatedStorage": {
+      "$className": "Folder",
+      "Lib": {
+        "$path": "sync/ReplicatedStorage/Lib"
+      }
+    }
+  }
+}
