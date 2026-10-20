@@ -1,0 +1,46 @@
+name: Lib - Windows Self-Hosted Rojo CI
+
+# This personal runner executes only trusted branch pushes / manual dispatch.
+# A partial RBXM is never automatically published as a full Place.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lib-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate and package Lib
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SHA-256-verified Windows Rojo and Luau
+        run: .\scripts\ci\setup-windows-tools.ps1
+
+      - name: Validate Rojo development mapping (not for publication)
+        run: rojo build default.project.json --output validation.rbxlx
+
+      - name: Build incremental RBXM model
+        run: rojo build deploy.project.json --output Lib.rbxm
+
+      - name: Upload installable model
+        uses: actions/upload-artifact@v4
+        with:
+          name: lib-rbxm
+          path: Lib.rbxm
+          if-no-files-found: error
+
+      # Deploy intentionally disabled until the target Place, managed instance
+      # paths, and Roblox Open Cloud credentials have been reviewed.
