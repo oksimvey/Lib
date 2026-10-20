@@ -1,0 +1,28 @@
+{
+  "name": "Lib",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "$ignoreUnknownInstances": true,
+      "Lib": {
+        "$path": "sync/ReplicatedStorage/Lib"
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "$ignoreUnknownInstances": true,
+      "Script": {
+        "$path": "sync/ServerScriptService/Script.server.luau"
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "$ignoreUnknownInstances": true,
+        "$path": "sync/StarterPlayer/StarterPlayerScripts"
+      }
+    }
+  }
+}
