@@ -42,5 +42,36 @@ jobs:
           path: Lib.rbxm
           if-no-files-found: error
 
-      # Deploy intentionally disabled until the target Place, managed instance
-      # paths, and Roblox Open Cloud credentials have been reviewed.
+      - name: Compile exactly the managed Luau sources
+        run: .\scripts\azul\sync-from-github.ps1 -ValidateOnly
+
+      - name: Parse and validate Azul bridge PowerShell
+        run: |
+          $tokens = $null
+          $errors = $null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path 'scripts/azul/sync-from-github.ps1').Path, [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { throw ($errors | ForEach-Object Message | Out-String) }
+
+  live-sync:
+    name: Validated git pull -> isolated Azul Live Sync
+    needs: build
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: Checkout bridge automation
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Pull validated revision and project managed scripts
+        env:
+          AZUL_PROJECT_DIR: ${{ vars.AZUL_PROJECT_DIR }}
+          AZUL_PORT: ${{ vars.AZUL_PORT }}
+          AZUL_EXPECTED_BRANCH: master
+          AZUL_PULL_TOKEN: ${{ github.token }}
+        run: |
+          $dir = if ($env:AZUL_PROJECT_DIR) { $env:AZUL_PROJECT_DIR } else { 'C:\Roblox\Lib' }
+          $port = if ($env:AZUL_PORT) { [int]$env:AZUL_PORT } else { 8104 }
+          .\scripts\azul\sync-from-github.ps1 -ProjectDir $dir -Port $port
